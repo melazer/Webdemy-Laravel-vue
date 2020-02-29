@@ -3,7 +3,8 @@
 
 
 Route::get('/', function () {
-    return view("front");
+    $featuredSeries = App\Series::take(3)->latest()->get();
+    return view("front", compact('featuredSeries'));
 });
 
 Auth::routes();
